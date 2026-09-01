@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>M. S. Chandhiresh — Maths Tutoring, Class 10–12 &amp; JEE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1B2A41;
+    --ink-soft:#3C4A5E;
+    --paper:#F5F1E6;
+    --paper-raised:#FBF9F3;
+    --pine:#2F5D50;
+    --pine-deep:#22453B;
+    --gold:#C98A2C;
+    --line:#CFC6AE;
+    --line-strong:#1B2A4133;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter', sans-serif;
+    font-size:16.5px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .grid-bg{
+    background-image:
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size:34px 34px;
+    background-position:-1px -1px;
+    opacity:0.35;
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+  }
+  h1,h2,h3{
+    font-family:'Sora', sans-serif;
+    font-weight:600;
+    letter-spacing:-0.01em;
+    color:var(--ink);
+  }
+  a{color:inherit;}
+  .wrap{
+    max-width:1240px;
+    margin:0 auto;
+    padding:0 clamp(24px, 4vw, 64px);
+  }
+  /* ---------- Header ---------- */
+  header{
+    padding:26px 0;
+    border-bottom:1px solid var(--line);
+  }
+  header .wrap{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  .brand{
+    font-family:'Sora', sans-serif;
+    font-size:1.2rem;
+    font-weight:700;
+  }
+  .brand span{color:var(--pine); font-weight:500;}
+  nav a{
+    font-size:0.98rem;
+    font-weight:500;
+    color:var(--ink-soft);
+    text-decoration:none;
+    margin-left:26px;
+  }
+  nav a:hover{color:var(--pine);}
+  
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;
+    overflow:hidden;
+    padding:72px 0 60px;
+    border-bottom:1px solid var(--line);
+  }
+  .hero .wrap{position:relative; z-index:1;}
+  .hero-inner{
+    display:grid;
+    grid-template-columns:1.15fr 0.85fr;
+    gap:clamp(40px, 5vw, 80px);
+    align-items:center;
+  }
+
+  /* Round Portfolio Photo Component */
+  .portfolio-showcase{
+    position:relative;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+  }
+  .portfolio-photo-frame{
+    width:100%;
+    max-width:320px;
+    aspect-ratio:1/1;
+    background:var(--paper-raised);
+    border:4px solid var(--pine);
+    border-radius:50%;
+    overflow:hidden;
+    box-shadow:0 12px 32px rgba(27,42,65,0.12);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .portfolio-photo-frame img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+  }
+  .portfolio-photo-frame svg{
+    width:72px;
+    height:72px;
+    opacity:0.35;
+  }
+  .portfolio-meta{
+    margin-top:20px;
+    text-align:center;
+    background:var(--paper-raised);
+    border:1px solid var(--line);
+    padding:10px 24px;
+    border-radius:24px;
+    width:fit-content;
+  }
+  .portfolio-meta .profile-name{
+    font-family:'Sora', sans-serif;
+    font-weight:700;
+    font-size:1.15rem;
+  }
+  .portfolio-meta .profile-role{
+    font-size:0.92rem;
+    color:var(--ink-soft);
+    margin-top:2px;
+  }
+
+  .eyebrow-note{
+    font-family:'JetBrains Mono', monospace;
+    font-weight:500;
+    font-size:0.82rem;
+    color:var(--pine-deep);
+    background:var(--paper-raised);
+    border:1px solid var(--line);
+    display:inline-block;
+    padding:5px 10px;
+    border-radius:3px;
+    margin-bottom:20px;
+  }
+  .hero h1{
+    font-size:clamp(2.75rem, 2.1rem + 2vw, 3.6rem);
+    line-height:1.15;
+    max-width:13ch;
+  }
+  .hero h1 em{
+    font-style:normal;
+    color:var(--pine);
+  }
+  .hero p.lead{
+    margin-top:20px;
+    font-size:1.18rem;
+    color:var(--ink-soft);
+    max-width:46ch;
+  }
+  .hero-ctas{
+    margin-top:30px;
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:13px 24px;
+    border-radius:3px;
+    font-size:1.02rem;
+    font-weight:600;
+    text-decoration:none;
+    border:1px solid transparent;
+    transition:transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .btn-primary{
+    background:var(--pine);
+    color:var(--paper-raised);
+  }
+  .btn-primary:hover{transform:translateY(-1px); box-shadow:0 4px 12px rgba(47,93,80,0.28);}
+  .btn-secondary{
+    background:transparent;
+    color:var(--ink);
+    border-color:var(--ink);
+  }
+  .btn-secondary:hover{transform:translateY(-1px); box-shadow:0 4px 12px rgba(27,42,65,0.15);}
+  .hero-badges{
+    margin-top:34px;
+    display:flex;
+    gap:28px;
+    flex-wrap:wrap;
+  }
+  .hero-badge b{
+    display:block;
+    font-family:'Sora', sans-serif;
+    font-size:1.7rem;
+    font-weight:700;
+    color:var(--pine-deep);
+  }
+  .hero-badge span{
+    font-size:0.88rem;
+    color:var(--ink-soft);
+  }
+
+  /* ---------- Sections ---------- */
+  section{
+    padding:clamp(56px, 6vw, 88px) 0;
+    border-bottom:1px solid var(--line);
+  }
+  .section-head{
+    max-width:56ch;
+    margin-bottom:38px;
+  }
+  .section-head .tag{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.78rem;
+    color:var(--pine);
+  }
+  .section-head h2{
+    font-size:2rem;
+    margin-top:8px;
+  }
+  .section-head p{
+    color:var(--ink-soft);
+    font-size:1.05rem;
+    margin-top:12px;
+  }
+
+  /* ---------- Approach grid ---------- */
+  .approach-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+  .approach-item{
+    background:var(--paper-raised);
+    padding:26px;
+  }
+  .approach-item h3{
+    font-size:1.15rem;
+    display:flex;
+    align-items:baseline;
+    gap:10px;
+  }
+  .approach-item h3 .mark{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.88rem;
+    color:var(--pine);
+  }
+  .approach-item p{
+    margin-top:8px;
+    font-size:1rem;
+    color:var(--ink-soft);
+  }
+
+  /* ---------- Topic-only callout ---------- */
+  .callout{
+    margin-top:30px;
+    border-left:3px solid var(--gold);
+    background:var(--paper-raised);
+    padding:20px 24px;
+  }
+  .callout p{color:var(--ink-soft); font-size:1.02rem;}
+  .callout strong{color:var(--ink);}
+
+  /* ---------- Pricing ---------- */
+  .price-tables{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:24px;
+  }
+  .price-card{
+    border:1px solid var(--line);
+    background:var(--paper-raised);
+  }
+  .price-card-head{
+    padding:20px 24px;
+    border-bottom:1px solid var(--line);
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+  }
+  .price-card-head h3{font-size:1.35rem;}
+  .price-card-head span{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.82rem;
+    font-weight:500;
+    color:var(--ink-soft);
+  }
+  .price-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:19px 24px;
+    border-bottom:1px solid var(--line);
+  }
+  .price-row:last-child{border-bottom:none;}
+  .price-row .plan-name{font-size:1.03rem; font-weight:500;}
+  .price-row .plan-sub{
+    font-size:0.88rem;
+    color:var(--ink-soft);
+    margin-top:2px;
+  }
+  .price-row .plan-amount{
+    font-family:'JetBrains Mono', monospace;
+    font-weight:600;
+    font-size:1.35rem;
+    color:var(--pine-deep);
+    white-space:nowrap;
+    padding-left:16px;
+  }
+  .price-note{
+    margin-top:22px;
+    font-size:0.98rem;
+    color:var(--ink-soft);
+  }
+  .price-note .gold-dot{color:var(--gold); font-weight:600;}
+
+  /* ---------- Schedule example ---------- */
+  .schedule-demo{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:24px;
+  }
+  .schedule-card{
+    border:1px solid var(--line);
+    background:var(--paper-raised);
+    padding:24px;
+  }
+  .schedule-card h3{font-size:1.08rem; margin-bottom:14px;}
+  .slot-row{
+    display:flex;
+    gap:10px;
+    margin-bottom:8px;
+    font-size:0.98rem;
+    color:var(--ink-soft);
+  }
+  .slot-row .dot{
+    width:6px; height:6px; border-radius:50%;
+    background:var(--pine);
+    margin-top:8px;
+    flex-shrink:0;
+  }
+
+  /* ---------- Contact ---------- */
+  .contact{
+    background:var(--ink);
+    color:var(--paper);
+    border-bottom:none;
+  }
+  .contact .section-head p{color:#C7CDD8;}
+  .contact .section-head .tag{color:var(--gold);}
+  .contact h2{color:var(--paper);}
+  .contact-box{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:24px;
+    border:1px solid #33455F;
+    padding:30px;
+  }
+  .contact-name{
+    font-family:'Sora', sans-serif;
+    font-weight:700;
+    font-size:1.7rem;
+  }
+  .contact-number{
+    font-family:'JetBrains Mono', monospace;
+    font-weight:500;
+    font-size:1.2rem;
+    color:#C7CDD8;
+    margin-top:8px;
+  }
+  .contact-ctas{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+  }
+  .contact .btn-primary{background:var(--gold); color:var(--ink);}
+  .contact .btn-secondary{border-color:#5A6B85; color:var(--paper);}
+  footer{
+    padding:24px 0;
+    text-align:center;
+    font-size:0.82rem;
+    color:var(--ink-soft);
+  }
+  @media (max-width:760px){
+    .hero-inner{grid-template-columns:1fr;}
+    .hero h1{font-size:2.1rem; max-width:100%;}
+    .portfolio-showcase{margin-top:20px;}
+    .portfolio-photo-frame{max-width:240px;}
+    .approach-grid{grid-template-columns:1fr;}
+    .price-tables{grid-template-columns:1fr;}
+    .schedule-demo{grid-template-columns:1fr;}
+    nav{display:none;}
+    .contact-box{flex-direction:column; align-items:flex-start;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .btn{transition:none;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="brand">M. S. Chandhiresh <span>· Maths Tutoring</span></div>
+    <nav>
+      <a href="#approach">Approach</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#schedule">Scheduling</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="grid-bg"></div>
+  <div class="wrap">
+    <div class="hero-inner">
+      <div>
+        <span class="eyebrow-note">y = teaching, one student at a time</span>
+        <h1>Maths tuition for Class 10, 11 &amp; 12 — and JEE, <em>built around you</em></h1>
+        <p class="lead">One-to-one online sessions for NCERT Maths and JEE preparation. Struggling with one topic, not the whole syllabus? We can work on just that — and you pay for just that.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-primary" href="tel:+919944727661">Call 99447 27661</a>
+          <a class="btn btn-secondary" href="https://wa.me/919944727661" target="_blank" rel="noopener">Message on WhatsApp</a>
+        </div>
+        <div class="hero-badges">
+          <div class="hero-badge">
+            <b>2+ yrs</b>
+            <span>teaching NCERT Maths</span>
+          </div>
+          <div class="hero-badge">
+            <b>1:1</b>
+            <span>fully online, live sessions</span>
+          </div>
+          <div class="hero-badge">
+            <b>Custom</b>
+            <span>schedule &amp; rates</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="portfolio-showcase">
+        <div class="portfolio-photo-frame">
+          <img src="https://media.licdn.com/dms/image/v2/D5603AQEQJzC3Nfu6ZQ/profile-displayphoto-shrink_800_800/B56ZWAXU9RGsAg-/0/1741615355472?e=1789603200&v=beta&t=VeEQpLAX6UwWygAkyBNdmD5THWdN45swS2SkukfRTsY" alt="M. S. Chandhiresh" onerror="this.remove()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#1B2A41" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg>
+        </div>
+        <div class="portfolio-meta">
+          <div class="profile-name">M. S. Chandhiresh</div>
+          <div class="profile-role">Maths Tutor · Class 10–12 &amp; JEE</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="approach">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="tag">how sessions work</span>
+      <h2>Built for how you actually need to learn</h2>
+      <p>No fixed package, no one-size batch. Every part of the tuition is set up around the student.</p>
+    </div>
+    <div class="approach-grid">
+      <div class="approach-item">
+        <h3><span class="mark">01</span> NCERT syllabus, Class 10–12</h3>
+        <p>Two-plus years of experience teaching the NCERT Maths curriculum, topic by topic, with practice aligned to board exam patterns.</p>
+      </div>
+      <div class="approach-item">
+        <h3><span class="mark">02</span> Fully online</h3>
+        <p>All sessions are conducted online, so location is never a constraint — learn from home, on your own device.</p>
+      </div>
+      <div class="approach-item">
+        <h3><span class="mark">03</span> Flexible timing</h3>
+        <p>Session days and times are worked out directly with the student and parent, and can change as school schedules change.</p>
+      </div>
+      <div class="approach-item">
+        <h3><span class="mark">04</span> Topic-only option</h3>
+        <p>Weak in one chapter, like trigonometry or calculus? Book just that topic and pay only for the hours it takes.</p>
+      </div>
+    </div>
+    <div class="callout">
+      <p><strong>Only need help with one topic?</strong> You're not charged for the full Maths syllabus — the rate is based on what's actually being taught. Mention the exact topic when you get in touch, and the plan is built around it.</p>
+    </div>
+  </div>
+</section>
+
+<section id="pricing">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="tag">rates</span>
+      <h2>Plans, priced per week</h2>
+      <p>All plans below are for 3 hours a week, split however suits the student's schedule. Topic-only sessions and other hourly combinations are quoted separately — just ask.</p>
+    </div>
+    <div class="price-tables">
+      <div class="price-card">
+        <div class="price-card-head">
+          <h3>Class 10</h3>
+          <span>3 hrs / week</span>
+        </div>
+        <div class="price-row">
+          <div>
+            <div class="plan-name">NCERT Maths only</div>
+            <div class="plan-sub">Board-focused, no JEE content</div>
+          </div>
+          <div class="plan-amount">₹5,000</div>
+        </div>
+        <div class="price-row">
+          <div>
+            <div class="plan-name">NCERT Maths + JEE prep</div>
+            <div class="plan-sub">Board syllabus with JEE foundation</div>
+          </div>
+          <div class="plan-amount">₹7,000</div>
+        </div>
+      </div>
+      <div class="price-card">
+        <div class="price-card-head">
+          <h3>Class 12</h3>
+          <span>3 hrs / week</span>
+        </div>
+        <div class="price-row">
+          <div>
+            <div class="plan-name">NCERT Maths only</div>
+            <div class="plan-sub">Board-focused, no JEE content</div>
+          </div>
+          <div class="plan-amount">₹7,000</div>
+        </div>
+        <div class="price-row">
+          <div>
+            <div class="plan-name">NCERT Maths + JEE prep</div>
+            <div class="plan-sub">Board syllabus with JEE-level problems</div>
+          </div>
+          <div class="plan-amount">₹9,000</div>
+        </div>
+      </div>
+    </div>
+    <p class="price-note"><span class="gold-dot">●</span> Refer a student who signs up, and your own plan gets ₹1,000 off.</p>
+    <p class="price-note"><span class="gold-dot">●</span> Class 11 students, JEE-only candidates, and single-topic requests are priced individually — get in touch with the details and a rate is worked out together.</p>
+  </div>
+</section>
+
+<section id="schedule">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="tag">example</span>
+      <h2>Same 3 hours, split your way</h2>
+      <p>Weekly hours can be arranged across as many or as few days as needed — two examples for a 3-hour week:</p>
+    </div>
+    <div class="schedule-demo">
+      <div class="schedule-card">
+        <h3>Spread across 3 days</h3>
+        <div class="slot-row"><div class="dot"></div><div>1 hour · Day 1</div></div>
+        <div class="slot-row"><div class="dot"></div><div>1 hour · Day 2</div></div>
+        <div class="slot-row"><div class="dot"></div><div>1 hour · Day 3</div></div>
+      </div>
+      <div class="schedule-card">
+        <h3>Spread across 2 days</h3>
+        <div class="slot-row"><div class="dot"></div><div>1.5 hours · Day 1</div></div>
+        <div class="slot-row"><div class="dot"></div><div>1.5 hours · Day 2</div></div>
+      </div>
+    </div>
+    <p class="price-note" style="margin-top:24px;">The exact days and times are fixed together based on what works for both sides — reach out to check current availability.</p>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="tag">get in touch</span>
+      <h2>Have a student who needs a Maths tutor?</h2>
+      <p>Reach out directly — for yourself, or to refer someone. Parents are welcome to call and ask questions before committing to a plan.</p>
+    </div>
+    <div class="contact-box">
+      <div>
+        <div class="contact-name">M. S. Chandhiresh</div>
+        <div class="contact-number">+91 99447 27661</div>
+      </div>
+      <div class="contact-ctas">
+        <a class="btn btn-primary" href="https://wa.me/919944727661" target="_blank" rel="noopener">WhatsApp</a>
+        <a class="btn btn-secondary" href="tel:+919944727661">Call</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">M. S. Chandhiresh — Online Maths Tutoring, Class 10–12 &amp; JEE</div>
+</footer>
+
+</body>
+</html>
